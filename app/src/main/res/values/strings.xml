@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jetpack Compose Test</string>
+    <string name="title_activity_mark_down_parser">MarkDown Parser</string>
+    <string name="title_activity_app_store">My App Store</string>
+</resources>
