@@ -2,7 +2,6 @@ package com.example.jetpackcomposetest
 
 import androidx.compose.Composable
 import androidx.compose.state
-import androidx.ui.foundation.TextFieldValue
 import androidx.ui.tooling.preview.Preview
 
 @Preview(showDecoration = true)
@@ -30,7 +29,7 @@ fun Test() {
         Namespaces are one honking great idea -- let's do more of those!
     """.trimIndent()
 
-    val (text, setText) = state { TextFieldValue(zenOfPython)}
+    val (text, setText) = state { androidx.ui.input.TextFieldValue(zenOfPython) }
 
     CodeEditor(value = text, onValueChange = setText)
 }

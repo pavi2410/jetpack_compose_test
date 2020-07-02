@@ -7,10 +7,10 @@ import androidx.compose.state
 import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.TextField
-import androidx.ui.foundation.TextFieldValue
 import androidx.ui.foundation.currentTextStyle
 import androidx.ui.graphics.Color
 import androidx.ui.input.OffsetMap
+import androidx.ui.input.TextFieldValue
 import androidx.ui.input.TransformedText
 import androidx.ui.input.VisualTransformation
 import androidx.ui.layout.Column
@@ -22,8 +22,6 @@ import androidx.ui.text.font.FontFamily
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.sp
 import androidx.ui.viewinterop.AndroidView
-import kotlin.math.floor
-import kotlin.math.log10
 
 @Preview(showDecoration = true)
 @Composable
@@ -156,7 +154,7 @@ fun parseMd(md: String): String =
         .replace("""^\s*(\n)?(.+)""".toRegex()) { m ->
             if ("""</?(h\d|ul|ol|li|blockquote|pre|img)""".toRegex()
                     .containsMatchIn(m.value)
-            ) m.value else "<p>" + m.value + "</p>";
+            ) m.value else "<p>${m.value}</p>"
         }
 
         //strip p from pre

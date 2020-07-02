@@ -7,7 +7,7 @@ import androidx.compose.onCommit
 import androidx.compose.remember
 import androidx.compose.staticAmbientOf
 
-private val AmbientBackPressedDispatcher = staticAmbientOf<OnBackPressedDispatcherOwner?> { null }
+val AmbientBackPressedDispatcher = staticAmbientOf<OnBackPressedDispatcherOwner?> { null }
 
 private class ComposableBackHandler(enabled: Boolean) : OnBackPressedCallback(enabled) {
     lateinit var onBackPressed: () -> Unit
