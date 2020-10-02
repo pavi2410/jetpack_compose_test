@@ -1,55 +1,52 @@
 package com.example.jetpackcomposetest
 
-import androidx.compose.Composable
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.core.clip
-import androidx.ui.core.drawShadow
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.VerticalScroller
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.ripple.ripple
-import androidx.ui.text.font.FontFamily
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 
 @Composable
 fun Greeting(name: String) {
-    Box(modifier = Modifier.padding(vertical = 16.dp, horizontal = 16.dp).drawShadow(8.dp)) {
-        Box(
-            modifier = Modifier.height(64.dp).fillMaxWidth().clip(RoundedCornerShape(8.dp))
-                .ripple(color = Color.Blue.copy(alpha = 0.8f)),
-            backgroundColor = Color.Blue
-        ) {
-            Row(verticalGravity = Alignment.CenterVertically) {
-                Box(
-                    modifier = Modifier.width(8.dp).height(64.dp),
-                    backgroundColor = Color.Blue.copy(alpha = 0.3f)
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = name,
-                    fontSize = 16.sp,
-                    fontFamily = FontFamily.Monospace,
-                    color = Color.White.copy(alpha = 0.9f)
-                )
-            }
-        }
+    val roundedShape = RoundedCornerShape(8.dp)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .height(64.dp)
+            .padding(8.dp)
+            .fillMaxWidth()
+            .drawShadow(16.dp, roundedShape)
+            .background(color = Color.Blue, shape = roundedShape)
+            .clip(roundedShape)
+    ) {
+        Box(Modifier.width(8.dp).height(48.dp).background(Color.Green))
+        Spacer(Modifier.width(8.dp))
+        Text(
+            text = name,
+            fontSize = 16.sp,
+            fontFamily = FontFamily.Monospace,
+            color = Color.White.copy(alpha = 0.9f)
+        )
     }
 }
 
 @Preview(showDecoration = true)
 @Composable
 fun ListScroller() {
-    VerticalScroller {
-        listOf("Android", "Hello World", "🤣😂", "Foo bar", "haha")
-            .flatMap {
-                listOf(it, it, it)
-            }
+    ScrollableColumn {
+        listOf("Android Dev", "Hello World", "🤣😂", "Foo bar", "Jetpack Compose")
+            .flatMap { listOf(it, it) }
+            .take(10)
             .shuffled()
             .forEach {
                 Greeting(it)

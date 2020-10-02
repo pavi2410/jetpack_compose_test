@@ -1,25 +1,27 @@
 package com.example.jetpackcomposetest
 
-import androidx.compose.Composable
-import androidx.ui.core.Alignment
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
-import androidx.ui.foundation.shape.corner.CircleShape
-import androidx.ui.graphics.Color
-import androidx.ui.layout.*
-import androidx.ui.material.Button
-import androidx.ui.material.Card
-import androidx.ui.material.CircularProgressIndicator
-import androidx.ui.material.Divider
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.ArrowBack
-import androidx.ui.material.icons.filled.Person
-import androidx.ui.text.font.FontWeight
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
+import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Divider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
 
-//@Preview(showDecoration = true)
+@Preview(showDecoration = true)
 @Composable
 fun TopHype() {
     Column(modifier = Modifier.fillMaxSize()) {
@@ -27,7 +29,7 @@ fun TopHype() {
             Icon(
                 asset = Icons.Default.Person,
                 modifier = Modifier.size(48.dp)
-                    .drawBackground(Color.Yellow, shape = CircleShape)
+                    .background(Color.Yellow, shape = CircleShape)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Column {
@@ -67,10 +69,10 @@ fun Profile() {
             Icon(
                 asset = Icons.Default.Person,
                 modifier = Modifier.size(48.dp)
-                    .drawBackground(Color.Yellow, shape = CircleShape)
+                    .background(Color.Yellow, shape = CircleShape)
             )
 
-            Column(horizontalGravity = Alignment.End) {
+            Column(horizontalAlignment = Alignment.End) {
                 Text("TopHype", fontWeight = FontWeight.Bold, fontSize = 24.sp)
                 Text("@tophype", color = Color.DarkGray)
             }
@@ -89,7 +91,7 @@ fun Profile() {
             Text(text = "FOLLOW")
         }
         Divider()
-        Box(gravity = ContentGravity.TopCenter, modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Box(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
             CircularProgressIndicator(progress = 0.7f)
         }
     }

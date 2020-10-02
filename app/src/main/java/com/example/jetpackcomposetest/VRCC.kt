@@ -1,33 +1,27 @@
 package com.example.jetpackcomposetest
 
-import androidx.compose.Composable
-import androidx.ui.core.Alignment
-import androidx.ui.core.Alignment.Companion.CenterVertically
-import androidx.ui.core.Modifier
-import androidx.ui.foundation.Box
-import androidx.ui.foundation.Icon
-import androidx.ui.foundation.Text
-import androidx.ui.foundation.drawBackground
-import androidx.ui.foundation.shape.corner.RoundedCornerShape
-import androidx.ui.graphics.Color
-import androidx.ui.graphics.vector.VectorAsset
-import androidx.ui.graphics.vector.addPathNodes
-import androidx.ui.graphics.vector.path
-import androidx.ui.layout.*
-import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.filled.*
-import androidx.ui.material.icons.lazyMaterialIcon
-import androidx.ui.material.icons.materialPath
+import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.VectorAsset
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.dp
-import androidx.ui.unit.sp
-import java.util.*
 
 @Preview(showDecoration = true)
 @Composable
 fun VRCC() {
     Column(
-        horizontalGravity = Alignment.CenterHorizontally,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
         Text(
@@ -69,9 +63,9 @@ fun Detail(model: DetailModel) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(
-                verticalGravity = CenterVertically,
+                verticalAlignment = CenterVertically,
                 modifier = Modifier
-                    .drawBackground(
+                    .background(
                         color = Color(0x4DBBDEFB),
                         shape = RoundedCornerShape(
                             topRightPercent = 50,
@@ -82,7 +76,6 @@ fun Detail(model: DetailModel) {
                         horizontal = 16.dp,
                         vertical = 8.dp
                     )
-                    .weight(weight = 1f)
             ) {
                 Icon(
                     asset = model.icon,
@@ -98,9 +91,9 @@ fun Detail(model: DetailModel) {
             }
             Spacer(modifier = Modifier.width(16.dp))
             Row(
-                verticalGravity = CenterVertically,
+                verticalAlignment = CenterVertically,
                 modifier = Modifier
-                    .drawBackground(
+                    .background(
                         color = Color(0x4DBBDEFB),
                         shape = RoundedCornerShape(
                             topLeftPercent = 50,
@@ -110,11 +103,6 @@ fun Detail(model: DetailModel) {
                     .padding(horizontal = 16.dp, vertical = 8.dp)
                     .fillMaxHeight()
             ) {
-                val cancelIcon by lazyMaterialIcon {
-                    materialPath {
-                        addPathNodes("M19,6.41L17.59,5 12,10.59 6.41,5 5,6.41 10.59,12 5,17.59 6.41,19 12,13.41 17.59,19 19,17.59 13.41,12z")
-                    }
-                }
 
                 if (model.pass)
                     Icon(
@@ -125,7 +113,6 @@ fun Detail(model: DetailModel) {
                 else
                     Icon(
                         asset = Icons.Default.Cancel,
-//                        asset = cancelIcon,
                         tint = Color.Red,
                         modifier = Modifier.width(32.dp)
                     )
